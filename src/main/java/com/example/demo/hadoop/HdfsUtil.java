@@ -33,9 +33,4 @@ public class HdfsUtil {
     }
 
 
-    public void update(){
-        
-
-    }
-
 }
