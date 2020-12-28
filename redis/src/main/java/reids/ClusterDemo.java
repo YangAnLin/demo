@@ -5,20 +5,21 @@ import org.junit.Before;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
-public class InfoDemo {
+public class ClusterDemo {
 
     private Jedis jedis;
 
     @Before
     public void before(){
-        jedis = new Jedis("192.168.198.130", 6379);  //指定Redis服务Host和port
+        //指定Redis服务Host和port
+        jedis = new Jedis("192.168.198.130", 6379);
     }
 
     @After
-    public void agter(){
-        jedis.close(); //使用完关闭连接
+    public void after(){
+        //使用完关闭连接
+        jedis.close();
     }
-
 
     @Test
     public void test1(){
