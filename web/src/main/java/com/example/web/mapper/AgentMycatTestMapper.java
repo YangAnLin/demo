@@ -1,7 +1,7 @@
 package com.example.web.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.demo.entity.AgentMycatTest;
+import com.example.web.entity.AgentMycatTest;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

@@ -1,6 +1,6 @@
 package com.example.web.config;
 
-import com.example.demo.telegram.YourBot;
+import com.example.web.telegram.YourBot;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

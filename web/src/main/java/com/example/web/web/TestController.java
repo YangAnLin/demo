@@ -3,12 +3,12 @@ package com.example.web.web;
 import cn.hutool.core.io.file.FileReader;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.demo.entity.AccountsInfo;
-import com.example.demo.entity.Teacher;
-import com.example.demo.mapper.DemoMapper;
-import com.example.demo.mapper.TeacherMapper;
-import com.example.demo.redis.RedisClient;
-import com.example.demo.telegram.YourBot;
+import com.example.web.entity.AccountsInfo;
+import com.example.web.entity.Teacher;
+import com.example.web.mapper.DemoMapper;
+import com.example.web.mapper.TeacherMapper;
+import com.example.web.redis.RedisClient;
+import com.example.web.telegram.YourBot;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,7 +31,6 @@ public class TestController {
 
     @Resource
     private TeacherMapper teacherMapper;
-
 
     @Resource
     private RedisClient redisClient;

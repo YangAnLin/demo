@@ -1,9 +1,9 @@
 package com.example.web.web;
 
-import com.example.demo.entity.AccountMycatTest;
-import com.example.demo.entity.AgentMycatTest;
-import com.example.demo.mapper.AccountMycatTestMapper;
-import com.example.demo.mapper.AgentMycatTestMapper;
+import com.example.web.entity.AccountMycatTest;
+import com.example.web.entity.AgentMycatTest;
+import com.example.web.mapper.AccountMycatTestMapper;
+import com.example.web.mapper.AgentMycatTestMapper;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

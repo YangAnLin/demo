@@ -1,6 +1,6 @@
 package com.example.web.mapper;
 
-import com.example.demo.entity.AccountsInfo;
+import com.example.web.entity.AccountsInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Param;
 public interface DemoMapper {
 
 
-    AccountsInfo callback(@Param("typeId") int typeId,@Param("userId") int userId);
+    AccountsInfo callback(@Param("typeId") int typeId, @Param("userId") int userId);
 }
