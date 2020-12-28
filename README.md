@@ -1,14 +1,8 @@
-# demo
-学习,测试的例子
-
-
-
-
 # java-demo
 ## base
 * 泛型
 * BIN和BIO
-* rpc
+* rpc原理实现
 
 ## hadoop
 * hadoop客户端
