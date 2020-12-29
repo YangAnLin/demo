@@ -6,18 +6,16 @@ import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
-public class SingtonDemo{
+public class SingtonDemo {
 
     private Jedis jedis;
 
     @Before
     public void before(){
         //指定Redis服务Host和port
-        jedis = new Jedis("192.168.198.130", 6379);
+        jedis = new Jedis("192.168.0.5", 6379);
     }
 
     @After
@@ -41,96 +39,102 @@ public class SingtonDemo{
      */
     @Test
     public void setTime() {
-        String key = "k2";
-        // 设值
-        jedis.set(key, "v2");
-        // 设置过期时间
-        // NX是不存在时才set， XX是存在时才set， EX是秒，PX是毫秒
-        jedis.set(key, "k2", "NX", "EX", 1000l);
+        String key = "setTimeKey";
+        jedis.setex(key, 20000, "setTimeValue");
+        System.out.println(jedis.get(key));
+        System.out.println(jedis.ttl(key));
     }
 
+    /**
+     * 分布式锁原理,
+     * key不存在的时候才插入
+     */
+    @Test
+    public void setNX() {
+        String key = "setNXKey";
+        // 1.先插入一个值
+        jedis.set(key, "setNXValue");
 
-    public Boolean expire(String key, long timeOut, TimeUnit unit) {
-        return null;
+        // 2.NX是不存在时才set， XX是存在时才set， EX是秒，PX是毫秒
+        String set = jedis.set(key, "setNXValue---NX", "NX", "EX", 20000L);
+        System.out.println(set);
+        System.out.println(jedis.get(key));
+        System.out.println(jedis.ttl(key));
+
+        System.out.println("======================================================");
+
+        // 3.设置个没有的key
+        String key2 = "setNXKey2";
+        String set2 = jedis.set(key2, "setNXValue2---NX", "NX", "EX", 20000L);
+        System.out.println(set2);
+        System.out.println(jedis.get(key2));
+        System.out.println(jedis.ttl(key2));
     }
 
+    /**
+     * key存在时才插入
+     */
+    @Test
+    public void setXX() {
+        String key = "setXXKey";
+        // 1.先插入一个值
+        jedis.set(key, "setXXValue");
+
+        // 2.NN
+        String set = jedis.set(key, "setXXValue---XX", "XX", "EX", 20000L);
+        System.out.println(set);
+        System.out.println(jedis.get(key));
+        System.out.println(jedis.ttl(key));
+
+        System.out.println("======================================================");
+
+        // 3.设置个没有的key
+        String key2 = "setXXKey2";
+        String set2 = jedis.set(key2, "setXXValue2---NX", "XX", "EX", 20000L);
+        System.out.println(set2);
+        System.out.println(jedis.get(key2));
+        System.out.println(jedis.ttl(key2));
+    }
+
+    @Test
+    public void expire() {}
 
     public Boolean expireAt(String key, long millisecondsTimestamp) {
         return null;
     }
 
-
     public boolean exit(String key) {
         return false;
     }
-
 
     public String get(String key) {
         return null;
     }
 
-
     public <T> T get(String key, Class<T> clazz) {
         return null;
     }
-
 
     public <T> List<T> getList(String key, Class<T> clazz) {
         return null;
     }
 
-
     public Boolean delete(String key) {
         return null;
     }
-
 
     public Set<String> getKeys(String pattern) {
         return null;
     }
 
-
-    public void delAll(String pattern) {
-
-    }
-
-
-    public Set<String> clusterScan(String pattern) {
-        return null;
-    }
-
+    public void delAll(String pattern) {}
 
     public boolean setDistributedLock(String lockKey, String requestId, long expireTime) {
         return false;
     }
 
-
     public boolean releaseDistributedLock(String lockKey, String requestId) {
         return false;
     }
 
-
-    public Long hdel(String key, String... field) {
-        return null;
-    }
-
-
-    public <T> boolean hset(String key, String field, T value) {
-        return false;
-    }
-
-
-    public <T> T hget(String key, String field, Class<T> clazz) {
-        return null;
-    }
-
-
-    public Map<String, String> hgetAll(String key) {
-        return null;
-    }
-
-
-    public <T> Map<String, T> hgetAll(String key, Class<T> clazz) {
-        return null;
-    }
 }
