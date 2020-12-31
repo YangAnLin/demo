@@ -25,10 +25,18 @@
         <mybatis-plus.version>3.4.0</mybatis-plus.version>
         <hutool.version>5.4.4</hutool.version>
         <junit.version>5.7.0</junit.version>
+        <commons-lang3.version>3.11</commons-lang3.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>

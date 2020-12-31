@@ -1,25 +1,32 @@
 package reids;
 
+import org.apache.commons.lang3.time.StopWatch;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
-public class SingtonDemo {
+/**
+ * 192.168.0.5 单机
+ */
+public class SingletonDemo {
 
     private Jedis jedis;
 
     @Before
-    public void before(){
+    public void before() {
         //指定Redis服务Host和port
         jedis = new Jedis("192.168.0.5", 6379);
     }
 
     @After
-    public void after(){
+    public void after() {
         //使用完关闭连接
         jedis.close();
     }
@@ -97,7 +104,64 @@ public class SingtonDemo {
     }
 
     @Test
-    public void expire() {}
+    public void expire() {
+    }
+
+    /**
+     * redis监控信息
+     */
+    @Test
+    public void info() {
+        String info = jedis.info();
+        Stream.of(info.split("\r\n")).forEach(row -> {
+
+                    String[] split = row.split(":");
+                    if (split.length == 2) {
+
+                        System.out.printf("key:%s ====  value:%s \r\n", split[0], split[1]);
+                    }
+
+                }
+        );
+    }
+
+    /**
+     * jedispool
+     */
+    @Test
+    public void jedisPool() throws InterruptedException {
+
+
+        StopWatch watch = new StopWatch();
+        watch.start();
+
+        for (int i = 0; i < 100000; i++) {
+            jedis.set(i + "", i + "");
+            jedis.close();
+        }
+        watch.stop();
+        System.out.println("5-" + watch.getTime());
+    }
+
+    @Test
+    public void jedisPool2() {
+
+        // 替换成你的reids地址和端口
+        String redisIp = "192.168.0.5";
+        int reidsPort = 6379;
+        JedisPool jedisPool = new JedisPool(new JedisPoolConfig(), redisIp, reidsPort);
+        Jedis resource = jedisPool.getResource();
+        StopWatch watch = new StopWatch();
+        watch.start();
+
+        for (int i = 0; i < 100000; i++) {
+            resource.set(i + "", i + "");
+        }
+        watch.stop();
+        System.out.println("5-" + watch.getTime());
+
+    }
+
 
     public Boolean expireAt(String key, long millisecondsTimestamp) {
         return null;
@@ -127,7 +191,8 @@ public class SingtonDemo {
         return null;
     }
 
-    public void delAll(String pattern) {}
+    public void delAll(String pattern) {
+    }
 
     public boolean setDistributedLock(String lockKey, String requestId, long expireTime) {
         return false;
