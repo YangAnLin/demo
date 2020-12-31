@@ -8,13 +8,13 @@ import com.example.web.entity.Teacher;
 import com.example.web.mapper.DemoMapper;
 import com.example.web.mapper.TeacherMapper;
 import com.example.web.redis.RedisClient;
-import com.example.web.telegram.YourBot;
+//import com.example.web.telegram.YourBot;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+//import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+//import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import javax.annotation.Resource;
 import java.io.FileNotFoundException;
@@ -158,24 +158,24 @@ public class TestController {
         return userId.toString();
     }
 
-    @Resource
-    private YourBot yourBot;
+//    @Resource
+//    private YourBot yourBot;
 
-    @RequestMapping("/tele")
-    public String tele(@RequestParam("userId") Integer userId) throws TelegramApiException {
-        System.out.println(userId);
-
-        SendMessage sm = new SendMessage();
-        sm.setChatId(569079805l);
-        sm.setText("收到!");
-        yourBot.execute(sm);
-        return userId.toString();
-    }
-
-    @RequestMapping("/test6")
-    public String test6() throws TelegramApiException {
-        return serverName;
-    }
+//    @RequestMapping("/tele")
+//    public String tele(@RequestParam("userId") Integer userId) throws TelegramApiException {
+//        System.out.println(userId);
+//
+//        SendMessage sm = new SendMessage();
+//        sm.setChatId(569079805l);
+//        sm.setText("收到!");
+//        yourBot.execute(sm);
+//        return userId.toString();
+//    }
+//
+//    @RequestMapping("/test6")
+//    public String test6() throws TelegramApiException {
+//        return serverName;
+//    }
 
 
 //    @Autowired
