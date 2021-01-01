@@ -7,7 +7,6 @@ import com.example.web.entity.AccountsInfo;
 import com.example.web.entity.Teacher;
 import com.example.web.mapper.DemoMapper;
 import com.example.web.mapper.TeacherMapper;
-import com.example.web.redis.RedisClient;
 //import com.example.web.telegram.YourBot;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,9 +30,6 @@ public class TestController {
 
     @Resource
     private TeacherMapper teacherMapper;
-
-    @Resource
-    private RedisClient redisClient;
 
     private final String key = "key123";
     private final String value = "value";
@@ -118,38 +114,6 @@ public class TestController {
         AccountsInfo accountsInfo = demoMapper.callback(0,1);
         System.out.println(accountsInfo);
         return "nice";
-    }
-
-    @RequestMapping("/test2")
-    public void redisdemo(){
-        System.out.println(redisClient.setDistributedLock(key, key, 20));
-    }
-
-    @RequestMapping("/redis")
-    public void redis() throws InterruptedException {
-        System.out.println(Thread.currentThread().getId()+"收到请求");
-
-//        for (int i = 1; i < 2; i++) {
-//            utl(i);
-//            Thread.sleep(1000);
-//        }
-        utl(1);
-    }
-
-    private void utl(int i) throws InterruptedException {
-        long start_time = System.currentTimeMillis();
-
-        if(!redisClient.setDistributedLock(key, key, 20)) {  // 没有获取到锁
-            System.out.println(Thread.currentThread().getId()+"===>锁住了===>"+i);
-            throw new RuntimeException(String.valueOf(Thread.currentThread().getId()));
-        }
-
-
-        Thread.sleep(10000);
-
-        System.out.println(Thread.currentThread().getId()+"执行成功===>"+i);
-
-        redisClient.delete(key);
     }
 
     @RequestMapping("/test5")
