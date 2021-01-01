@@ -1,5 +1,6 @@
 package reids;
 
+import cn.hutool.json.JSONUtil;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.After;
 import org.junit.Before;
@@ -37,7 +38,21 @@ public class SingletonDemo {
     @Test
     public void set() {
         //访问Redis服务
-        jedis.set("k1", "v1");
+        jedis.set("k2", "v2");
+        System.out.println(jedis.get("k1"));
+    }
+
+    /**
+     * 设值
+     */
+    @Test
+    public void setObj() {
+
+        User user = new User();
+        user.setAge(11);
+        user.setName("anthony");
+        //访问Redis服务
+        jedis.set("k1", JSONUtil.parse(user).toString());
         System.out.println(jedis.get("k1"));
     }
 

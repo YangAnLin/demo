@@ -8,7 +8,13 @@
 * hadoop客户端
 
 ## redis
-* jedis客户端的使用
+* mq redis广播
+* ClusterDemo 集群
+* SingletonDemo 单机
+
+## redis-springboot
+* redis整合springboot
+* 顺便测试,redis设置值的时候会序列化两次,在界面工具上,多了反斜杠
 
 ## web
 * 谷歌验证码
