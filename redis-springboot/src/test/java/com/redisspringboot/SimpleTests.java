@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  * 2.如果使用RedisTemplate,需要自定义Config
  */
 @SpringBootTest
-class RedisSpringbootApplicationTests {
+class SimpleTests {
 
     @Resource
     private RedisTemplate<String,String> redisTemplate;
