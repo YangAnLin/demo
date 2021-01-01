@@ -20,6 +20,4 @@
 * 谷歌验证码
 * 全局统一异常
 * mybatis-plus和代码生成
-* redis 集群和分布式锁
-* 手写rpc
 * telegram
