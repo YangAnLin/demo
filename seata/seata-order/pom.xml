@@ -4,14 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.example</groupId>
-        <artifactId>seata-demo</artifactId>
+        <artifactId>seata</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.order</groupId>
     <artifactId>seata-order</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>seata-order</name>
+    <name>seat-order</name>
     <description>订单</description>
 
     <properties>
