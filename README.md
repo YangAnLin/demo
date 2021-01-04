@@ -21,3 +21,6 @@
 * 全局统一异常
 * mybatis-plus和代码生成
 * telegram
+
+## Seata
+分布式事务

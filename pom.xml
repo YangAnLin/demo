@@ -136,8 +136,6 @@
                 <scope>compile</scope>
             </dependency>
 
-
-
         </dependencies>
     </dependencyManagement>
 
@@ -152,7 +150,6 @@
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
-                    <include>**/*.properties</include>
                     <include>**/*.*</include>
                 </includes>
                 <filtering>false</filtering>
