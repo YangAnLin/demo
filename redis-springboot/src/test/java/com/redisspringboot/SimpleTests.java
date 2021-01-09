@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 class SimpleTests {
 
     @Resource
-    private RedisTemplate<String,String> redisTemplate;
+    private RedisTemplate<Object,Object> redisTemplate;
 
     @Resource
     private StringRedisTemplate stringRedisTemplate;
@@ -28,24 +28,41 @@ class SimpleTests {
     }
 
     @Test
-    void setObj() {
-        User user = new User();
-        user.setAge(11);
-        user.setName("anthony");
-        redisTemplate.opsForValue().set("user123", JSONUtil.parse(user).toString());
-    }
-
-    @Test
     void setStringRedisTemplate() {
         stringRedisTemplate.opsForValue().set("k1", "v1");
     }
 
+    /**
+     * value,直接设置一个对象
+     */
+    @Test
+    void setObj() {
+        User user = new User();
+        user.setAge(11);
+        user.setName("anthony");
+        redisTemplate.opsForValue().set("setObj",user);
+    }
+
+    /**
+     * value,对象转成字符串
+     */
+    @Test
+    void setObjStr() {
+        User user = new User();
+        user.setAge(11);
+        user.setName("anthony");
+        redisTemplate.opsForValue().set("setObjStr", JSONUtil.parse(user).toString());
+    }
+
+    /**
+     * value,对象转成字符串
+     */
     @Test
     void setObjStringredistemplate() {
         User user = new User();
         user.setAge(11);
         user.setName("anthony");
-        redisTemplate.opsForValue().set("user1234", JSONUtil.parse(user).toString());
+        stringRedisTemplate.opsForValue().set("setObjStringredistemplate", JSONUtil.parse(user).toString());
     }
 
 }

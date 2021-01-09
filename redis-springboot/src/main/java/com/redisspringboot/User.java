@@ -1,7 +1,5 @@
 package com.redisspringboot;
 
-import lombok.Data;
-
 import java.io.Serializable;
 
 public class User implements Serializable {
