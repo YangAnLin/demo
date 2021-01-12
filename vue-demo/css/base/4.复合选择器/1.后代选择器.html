@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后代选择器</title>
+    <style>
+        /* 后代选择器 */
+        ol li {
+            color: red;
+        }
+
+        ol div {
+            color: pink;
+        }
+
+    </style>
+</head>
+<body>
+<ol>
+    <li>我是ol的孩子</li>
+    <li>我是ol的孩子</li>
+    <li>
+        <div>我是ol的孙子---后代选择器可以直接找孙子,不用通过儿子</div>
+    </li>
+</ol>
+
+</body>
+</html>

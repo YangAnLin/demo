@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /* 没有选中的连接 */
+        a:link{
+            /* 把颜色改成黑色 */
+            color: #333333;
+            /* 把连接的下划线去掉 */
+            text-decoration: none;
+        }
+
+        /* 选中的过连接 */
+        a:visited{
+            color: orange;
+        }
+
+        /* 鼠标经过的连接设置成蓝色,不管这个连接有没有已经被点过 */
+        a:hover{
+            color: skyblue;
+        }
+
+        /* 点击按钮,按下没有松开 */
+        a:active{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<a href="#">小猪佩奇</a>
+</body>
+</html>

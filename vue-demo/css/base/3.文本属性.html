@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本属性</title>
+    <style>
+
+        /* 文本颜色 */
+        .yanse {
+            color: rgb(255,0,0);
+        }
+
+        /* 对齐文本 */
+        .duiqi{
+            /* 只能让盒子里的文本水平对齐 */
+            text-align: center;
+            background-color: red;
+        }
+
+        .block-duiqi {
+            display: inline-block;
+            height: 200px;
+            width: 200px;
+            background-color: pink;
+            /* 只能让盒子里的文本水平对齐 */
+            text-align: center;
+        }
+
+        /* 装饰文本,就是加一条线 */
+        .jiaxian{
+            /* 下划线*/
+            /*text-decoration: underline;*/
+            /* 删除线 */
+            text-decoration: line-through;
+            /* 上划线 */
+            /*text-decoration: overline;*/
+        }
+
+        /* 文本缩进 */
+        .suojin{
+
+            /*text-indent: 20px;*/
+
+            /* 缩进两个文字大小的距离 */
+            text-indent: 2em;
+        }
+
+        /* 行间距 */
+        .hangjianju{
+            /* 上间距 +  字体大小 + 下间距 =50px*/
+            line-height: 50px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="yanse">文本颜色</div>
+<div class="duiqi">行-文本对齐</div>
+<div class="block-duiqi">块-文本对齐</div>
+<div class="jiaxian">装饰文本</div>
+<div class="suojin">文本缩进</div>
+<div class="hangjianju">上间距 +  字体大小(16px) + 下间距 =50px</div>
+
+</body>
+</html>
