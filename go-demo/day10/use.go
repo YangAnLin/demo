@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func demo() {
 
 	a := 200
 	b := 100
@@ -29,13 +29,12 @@ func main() {
 	fmt.Printf("引用传递,调用了方法,原来的值:%d\n", c)
 
 	// 返回值指定变量名
-	x,y := sum_product(1,2)
-	fmt.Printf("多个返回值,%d,%d", x,y)
+	x, y := sum_product(1, 2)
+	fmt.Printf("多个返回值,%d,%d", x, y)
 
 	// 返回参数没有指定变量名
-	i,j := sum_product2(1,2)
-	fmt.Printf("多个返回值,%d,%d", i,j)
-
+	i, j := sum_product2(1, 2)
+	fmt.Printf("多个返回值,%d,%d", i, j)
 
 }
 
@@ -64,14 +63,12 @@ func add(c *int) int {
 	return *c
 }
 
-
 func sum_product(A, B int) (add int, Multiplied int) {
-	add = A+B
-	Multiplied = A*B
+	add = A + B
+	Multiplied = A * B
 	return
 }
 
-
-func sum_product2(A, B int) (int,int) {
-	return A+B,A*B
+func sum_product2(A, B int) (int, int) {
+	return A + B, A * B
 }
