@@ -1,6 +1,8 @@
 package main
 
 import (
+	"demo/gorm/create"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -11,13 +13,18 @@ type Product struct {
 	Price uint
 }
 
-func main() {
+func initdb() gorm.DB {
 	dsn := "root:123456@tcp(127.0.0.1:3306)/gorm?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
 		panic("failed to connect database")
 	}
+
+	return *db
+}
+
+func quickStart(db gorm.DB) {
 
 	// 迁移 schema
 	db.AutoMigrate(&Product{})
@@ -38,4 +45,13 @@ func main() {
 
 	// Delete - 删除 product
 	db.Delete(&product, 1)
+}
+
+func main() {
+	db := initdb()
+
+	// demo
+	// quickStart(db)
+
+	create.CreateOne(db)
 }

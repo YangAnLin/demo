@@ -23,7 +23,6 @@ func method7() {
 
 	area = LENGTH * WIDTH
 	fmt.Println("面积是:", area)
-
 }
 
 /**
@@ -50,7 +49,6 @@ func method8() {
 }
 
 func method4() {
-
 	// 不赋值,存在默认值
 	var age, age2, age3 int
 	println("不赋值,就打印默认值:", age, age2, age3)
