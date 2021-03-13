@@ -56,43 +56,33 @@
 
         <dependency>
             <groupId>io.grpc</groupId>
-            <artifactId>grpc-protobuf</artifactId>
-            <version>1.23.1</version>
+            <artifactId>grpc-all</artifactId>
+            <version>1.35.0</version>
         </dependency>
-        <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-stub</artifactId>
-            <version>1.23.1</version>
-        </dependency>
-        <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-netty-shaded</artifactId>
-            <version>1.23.1</version>
-        </dependency>
+
 
     </dependencies>
 
     <build>
+        <extensions>
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.5.0.Final</version>
+            </extension>
+        </extensions>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
             <plugin>
                 <groupId>org.xolstice.maven.plugins</groupId>
                 <artifactId>protobuf-maven-plugin</artifactId>
                 <version>0.5.1</version>
                 <configuration>
-                    <!--proto编译器  os.detected.classifier，获取操作系统,这个属性是由
-                    ${os.detected.name}-${os.detected.arch}一起得来的-->
-                    <protocArtifact>
-                        com.google.protobuf:protoc:3.7.1:exe:${os.detected.classifier}
-                    </protocArtifact>
+                    <protoSourceRoot>${project.basedir}/src/main/proto</protoSourceRoot>
+                    <outputDirectory>${project.build.sourceDirectory}</outputDirectory>
+                    <clearOutputDirectory>false</clearOutputDirectory>
+                    <protocArtifact>com.google.protobuf:protoc:3.5.1-1:exe:${os.detected.classifier}</protocArtifact>
                     <pluginId>grpc-java</pluginId>
-                    <!--grpc-java代码生成工具-->
-                    <pluginArtifact>
-                        io.grpc:protoc-gen-grpc-java:1.23.1:exe:${os.detected.classifier}
-                    </pluginArtifact>
+                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.14.0:exe:${os.detected.classifier}</pluginArtifact>
                 </configuration>
                 <executions>
                     <execution>
@@ -104,14 +94,6 @@
                 </executions>
             </plugin>
         </plugins>
-        <!--用于根据.proto 文件生成 protobuf 文件-->
-        <extensions>
-            <extension>
-                <groupId>kr.motd.maven</groupId>
-                <artifactId>os-maven-plugin</artifactId>
-                <version>1.5.0.Final</version>
-            </extension>
-        </extensions>
     </build>
 
 </project>
