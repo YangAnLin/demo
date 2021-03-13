@@ -6,14 +6,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Demo {
+public class JDKDemo {
 
 
     public static void main(String args[]) {
         Process process = null;
         List<String> processList = new ArrayList<String>();
         try {
-            process = Runtime.getRuntime().exec("ps -aux");
+            process = Runtime.getRuntime().exec("ipconfig");
             BufferedReader input = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line = "";
             while ((line = input.readLine()) != null) {
