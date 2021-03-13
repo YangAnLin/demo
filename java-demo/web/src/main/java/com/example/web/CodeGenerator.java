@@ -18,7 +18,7 @@ import java.io.IOException;
 public class CodeGenerator {
     //RYAgentDB.Agent_SystemStatusInfo
     private static final String GLOBAL_PARENT = "com.lzkj.sports.db.v2";
-    private static final String DB_NAEM = "UnionGame";
+    private static final String DB_NAEM = "trojan";
     private static final boolean ALL_TABLE = false;
     private static final String GLOBAL_OUTPUT_DIR = "/sports-service/src/main/java/";
 
@@ -32,7 +32,7 @@ public class CodeGenerator {
         if(ALL_TABLE){
             gen.setStrategy(getStrategyConfig(null));
         } else {
-            String[] tables = {"Report_UserGameTypeBetDayDetail"};
+            String[] tables = {"machine"};
             gen.setStrategy(getStrategyConfig(tables));
         }
         //包配置
@@ -84,7 +84,7 @@ public class CodeGenerator {
                 .setEnableCache(false)// XML 二级缓存
                 .setBaseResultMap(false)//XML ResultMap
                 .setBaseColumnList(false)//XML columList
-                //.setSwagger2(true)
+                .setSwagger2(true)
                 .setOpen(false)//生成后打开文件夹
                 .setAuthor("")
                 // 自定义文件命名，注意 %s 会自动填充表实体属性！
@@ -101,9 +101,9 @@ public class CodeGenerator {
         return new DataSourceConfig()
                 .setDbType(DbType.MYSQL)
                 .setDriverName("com.mysql.cj.jdbc.Driver")
-                .setUrl("jdbc:mysql://10.14.2.212:3306/" + DB_NAEM+"?noAccessToProcedureBodies=true&useSSL=false&serverTimezone=Asia/Shanghai&useSSL=false")
+                .setUrl("jdbc:mysql://192.168.0.12:3306/" + DB_NAEM+"?noAccessToProcedureBodies=true&useSSL=false&serverTimezone=Asia/Shanghai&useSSL=false")
                 .setUsername("root")
-                .setPassword("Lzkj.123")
+                .setPassword("123456")
                 //将datetime装换为localdatetime的类型换成date类型
 //                .setTypeConvert((globalConfig, fieldType) -> {
 //                    System.out.println("转换类型：" + fieldType);
