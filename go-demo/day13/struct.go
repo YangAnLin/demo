@@ -17,10 +17,7 @@ type Library struct {
 }
 
 func main() {
-
 	var book Books
-
-	/* book 1 描述 */
 	book.title = "Go 语言"
 	book.author = "www.runoob.com"
 	book.subject = "Go 语言教程"

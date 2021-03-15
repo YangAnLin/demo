@@ -5,14 +5,16 @@ import "fmt"
 /**
 数组
  */
+
+type fb func(x int) int
+
 func main() {
 
 	//create()
 
-	get()
-
-
+	//get()
 }
+
 
 func get() {
 
